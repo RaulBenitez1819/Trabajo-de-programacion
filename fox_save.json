@@ -1,0 +1,11 @@
+{
+    "version": 1,
+    "player_x": 100,
+    "hp": 100,
+    "potions": 5,
+    "crystals": 0,
+    "quest": 1,
+    "allies": [],
+    "defeated": [],
+    "seen_intro": false
+}

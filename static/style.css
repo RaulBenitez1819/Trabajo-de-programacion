@@ -1,0 +1,291 @@
+/* Estilos generales del juego */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background-color: #101820;
+    background-image: radial-gradient(circle at top right, #243d4b, #101820 55%);
+    color: #f4f1e8;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Encabezado y menú */
+
+.encabezado {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px 6%;
+    border-bottom: 1px solid #354957;
+    background-color: #101820;
+}
+
+.logo {
+    color: #f18a3b;
+    font-weight: bold;
+    text-decoration: none;
+    letter-spacing: 1px;
+}
+
+.menu {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.menu a {
+    color: #ffd166;
+    text-decoration: none;
+}
+
+.menu a:hover {
+    color: #ffffff;
+}
+
+/* Contenido principal */
+
+.contenedor {
+    width: 90%;
+    max-width: 1000px;
+    margin: 40px auto;
+}
+
+.contenedor-chico {
+    max-width: 650px;
+}
+
+.presentacion {
+    padding: 40px;
+    margin-bottom: 30px;
+    border: 1px solid #354957;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #263b47, #17232d);
+}
+
+h1 {
+    margin-top: 10px;
+    margin-bottom: 15px;
+    font-size: 42px;
+}
+
+h2 {
+    margin-top: 0;
+}
+
+p {
+    line-height: 1.6;
+}
+
+.subtitulo {
+    color: #f18a3b;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.aclaracion {
+    color: #b9c5c9;
+    font-size: 14px;
+}
+
+/* Botones y enlaces */
+
+.boton,
+button {
+    display: inline-block;
+    padding: 12px 18px;
+    border: none;
+    border-radius: 8px;
+    background-color: #f18a3b;
+    color: #1b2023;
+    font-size: 15px;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.boton:hover,
+button:hover {
+    background-color: #ffd166;
+}
+
+.enlace {
+    color: #ffd166;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.enlace:hover {
+    color: #ffffff;
+}
+
+/* Secciones y datos de la partida */
+
+.seccion {
+    padding: 25px;
+    margin: 22px 0;
+    border: 1px solid #354957;
+    border-radius: 14px;
+    background-color: #1b2833;
+}
+
+.estadisticas {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+}
+
+.dato {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 16px;
+    border-radius: 10px;
+    background-color: #223442;
+}
+
+.dato span,
+.mision span {
+    color: #b9c5c9;
+    font-size: 14px;
+}
+
+.dato strong {
+    color: #ffd166;
+    font-size: 24px;
+}
+
+.mision {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-top: 18px;
+    margin-top: 18px;
+    border-top: 1px solid #354957;
+}
+
+/* Formulario */
+
+.formulario {
+    padding: 25px;
+    margin: 22px 0;
+    border: 1px solid #354957;
+    border-radius: 14px;
+    background-color: #1b2833;
+}
+
+.formulario label {
+    display: block;
+    margin: 17px 0 7px;
+    font-weight: bold;
+}
+
+.formulario input,
+.formulario select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #354957;
+    border-radius: 7px;
+    background-color: #111d26;
+    color: #f4f1e8;
+    font-size: 15px;
+}
+
+.formulario button {
+    width: 100%;
+    margin-top: 22px;
+}
+
+/* Mensajes que muestra Flask */
+
+.mensaje {
+    padding: 12px 15px;
+    margin: 15px 0;
+    border-radius: 8px;
+}
+
+.success {
+    border: 1px solid #3b8a61;
+    background-color: #183c2c;
+}
+
+.error {
+    border: 1px solid #c65b63;
+    background-color: #49262a;
+}
+
+/* Tabla de enemigos */
+
+.tabla-contenedor {
+    overflow-x: auto;
+    border: 1px solid #354957;
+    border-radius: 10px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #1b2833;
+}
+
+th,
+td {
+    padding: 15px 18px;
+    border-bottom: 1px solid #354957;
+    text-align: left;
+}
+
+th {
+    background-color: #223442;
+    color: #ffd166;
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+/* Pie de página */
+
+footer {
+    padding: 25px 15px;
+    margin-top: 50px;
+    border-top: 1px solid #354957;
+    color: #b9c5c9;
+    font-size: 14px;
+    text-align: center;
+}
+
+/* Ajustes para pantallas chicas */
+
+@media (max-width: 700px) {
+    .encabezado {
+        padding: 18px;
+    }
+
+    .menu {
+        gap: 12px;
+    }
+
+    .contenedor {
+        width: 92%;
+        margin-top: 25px;
+    }
+
+    .presentacion {
+        padding: 25px;
+    }
+
+    h1 {
+        font-size: 32px;
+    }
+
+    .estadisticas {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enemigos - Fox's Adventures</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header class="encabezado">
+        <a class="logo" href="{{ url_for('inicio') }}">FOX'S ADVENTURES</a>
+
+        <nav class="menu">
+            <a href="{{ url_for('inicio') }}">Inicio</a>
+            <a href="{{ url_for('partida') }}">Partida</a>
+            <a href="{{ url_for('enemigos') }}">Enemigos</a>
+        </nav>
+    </header>
+
+    <main class="contenedor">
+        <p class="subtitulo">BESTIARIO</p>
+        <h1>Enemigos de la aventura</h1>
+        <p class="aclaracion">Listado inicial de los enemigos del juego.</p>
+
+        <div class="tabla-contenedor">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Tipo</th>
+                        <th>Zona</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for enemigo in enemigos %}
+                        <tr>
+                            <td>{{ enemigo.nombre }}</td>
+                            <td>{{ enemigo.tipo }}</td>
+                            <td>{{ enemigo.zona }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <p><a class="enlace" href="{{ url_for('inicio') }}">Volver al inicio</a></p>
+    </main>
+
+    <footer>
+        <p>Fox's Adventures - Proyecto de programación</p>
+    </footer>
+</body>
+</html>

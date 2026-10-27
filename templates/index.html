@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fox's Adventures</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header class="encabezado">
+        <a class="logo" href="{{ url_for('inicio') }}">FOX'S ADVENTURES</a>
+
+        <nav class="menu">
+            <a href="{{ url_for('inicio') }}">Inicio</a>
+            <a href="{{ url_for('partida') }}">Partida</a>
+            <a href="{{ url_for('enemigos') }}">Enemigos</a>
+        </nav>
+    </header>
+
+    <main class="contenedor">
+        <section class="presentacion">
+            <p class="subtitulo">EL CRISTAL ROBADO</p>
+            <h1>Mi aventura</h1>
+            <p>
+                En esta página puedo consultar el estado de la partida
+                y entrar a las otras secciones del proyecto.
+            </p>
+            <a class="boton" href="{{ url_for('partida') }}">Editar partida</a>
+        </section>
+
+        {% with mensajes = get_flashed_messages(with_categories=true) %}
+            {% for tipo, mensaje in mensajes %}
+                <div class="mensaje {{ tipo }}">{{ mensaje }}</div>
+            {% endfor %}
+        {% endwith %}
+
+        <section class="seccion">
+            <h2>Estado de la partida</h2>
+
+            <div class="estadisticas">
+                <div class="dato">
+                    <span>Vida</span>
+                    <strong>{{ datos.get('hp', 100) }}/100</strong>
+                </div>
+
+                <div class="dato">
+                    <span>Pociones</span>
+                    <strong>{{ datos.get('potions', 3) }}</strong>
+                </div>
+
+                <div class="dato">
+                    <span>Cristales</span>
+                    <strong>{{ datos.get('crystals', 0) }}</strong>
+                </div>
+
+                <div class="dato">
+                    <span>Posición</span>
+                    <strong>{{ datos.get('player_x', 100) }}</strong>
+                </div>
+            </div>
+
+            <div class="mision">
+                <span>Misión actual</span>
+                <strong>{{ nombre_mision }}</strong>
+            </div>
+
+            <p class="aclaracion">
+                Estos datos se leen del archivo fox_save.json. Si todavía no hay
+                una partida guardada, se muestran los valores iniciales.
+            </p>
+        </section>
+
+        <section class="seccion">
+            <h2>Enemigos</h2>
+            <p>En esta sección está el listado inicial de enemigos del juego.</p>
+            <a class="enlace" href="{{ url_for('enemigos') }}">Ver enemigos</a>
+        </section>
+    </main>
+
+    <footer>
+        <p>Fox's Adventures - Proyecto de programación</p>
+    </footer>
+</body>
+</html>

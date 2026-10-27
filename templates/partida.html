@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Partida - Fox's Adventures</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header class="encabezado">
+        <a class="logo" href="{{ url_for('inicio') }}">FOX'S ADVENTURES</a>
+
+        <nav class="menu">
+            <a href="{{ url_for('inicio') }}">Inicio</a>
+            <a href="{{ url_for('partida') }}">Partida</a>
+            <a href="{{ url_for('enemigos') }}">Enemigos</a>
+        </nav>
+    </header>
+
+    <main class="contenedor contenedor-chico">
+        <p class="subtitulo">DATOS DE LA PARTIDA</p>
+        <h1>Editar partida</h1>
+        <p class="aclaracion">
+            Desde este formulario se pueden cambiar los valores guardados en el JSON.
+        </p>
+
+        {% with mensajes = get_flashed_messages(with_categories=true) %}
+            {% for tipo, mensaje in mensajes %}
+                <div class="mensaje {{ tipo }}">{{ mensaje }}</div>
+            {% endfor %}
+        {% endwith %}
+
+        <form class="formulario" method="POST">
+            <label for="hp">Vida (0 a 100)</label>
+            <input
+                type="number"
+                id="hp"
+                name="hp"
+                min="0"
+                max="100"
+                value="{{ datos.get('hp', 100) }}"
+                required
+            >
+
+            <label for="potions">Pociones (0 a 99)</label>
+            <input
+                type="number"
+                id="potions"
+                name="potions"
+                min="0"
+                max="99"
+                value="{{ datos.get('potions', 3) }}"
+                required
+            >
+
+            <label for="crystals">Cristales (0 a 99)</label>
+            <input
+                type="number"
+                id="crystals"
+                name="crystals"
+                min="0"
+                max="99"
+                value="{{ datos.get('crystals', 0) }}"
+                required
+            >
+
+            <label for="quest">Misión actual</label>
+            <select id="quest" name="quest">
+                {% for valor, nombre in [
+                    (0, 'Hablar con la anciana'),
+                    (1, 'Derrotar las sombras'),
+                    (2, 'Rescatar a Luma'),
+                    (3, 'Encontrar las ruinas'),
+                    (4, 'Derrotar al Guardián'),
+                    (5, 'Aventura completada')
+                ] %}
+                    <option value="{{ valor }}" {% if datos.get('quest', 0) == valor %}selected{% endif %}>
+                        {{ nombre }}
+                    </option>
+                {% endfor %}
+            </select>
+
+            <label for="player_x">Posición del jugador (0 a 3300)</label>
+            <input
+                type="number"
+                id="player_x"
+                name="player_x"
+                min="0"
+                max="3300"
+                value="{{ datos.get('player_x', 100) }}"
+                required
+            >
+
+            <button type="submit">Guardar cambios</button>
+        </form>
+
+        <p><a class="enlace" href="{{ url_for('inicio') }}">Volver al inicio</a></p>
+    </main>
+
+    <footer>
+        <p>Fox's Adventures - Proyecto de programación</p>
+    </footer>
+</body>
+</html>
